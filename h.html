@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Dashboard | Verbun</title>
+  <link rel="stylesheet" href="c.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+
+
+<nav>
+  <div class="logo">
+    <div class="badge">G</div>
+    <h3>GlassNav</h3>
+  </div>
+
+  <div class="links" id="primary-navigation" role="menu">
+    <a href="#about" role="menuitem">Home</a>
+    <a href="upload.html" role="menuitem">Upload</a>
+    <a href="#feed" role="menuitem">Feed</a>
+    <a href="#team" role="menuitem">Team</a>
+  </div>
+
+ <div class="user-area">
+  <span>Hello, Admin</span>
+  <button id="loginBtn">Login</button>
+</div>
+
+
+  <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation" type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+
+
+  
+  
+<!-- About This Website -->
+    <section id="about" class="about-glass">
+        <div class="about-content">
+          <h2>About Verbun</h2>
+          <p>
+            At Verbun, we don’t just teach languages — we unlock global fluency. 
+            Powered by smart algorithms and immersive learning experiences, 
+            Verbun adapts to your pace, goals, and style. Whether you're just starting out 
+            or refining your skills, our platform transforms the way you learn, speak, and connect.
+          </p>
+          
+        </div>
+      </section>
+  <!-- ===== DASHBOARD CONTENT ===== -->
+ 
+<section class="user-info-section">
+  <div class="user-card">
+    <!-- User Profile Image -->
+    <div class="user-image-wrapper" tabindex="0" aria-label="User profile image, click to change">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Profile Image" class="user-image" />
+      <button class="upload-btn" aria-label="Upload new profile image">📷</button>
+    </div>
+
+    <!-- Section Title -->
+    <h2 class="section-title">👤 User Information</h2>
+    <hr class="divider" />
+
+    <!-- User Info Items -->
+    <div class="info-item">
+      <p class="label">Full Name</p>
+      <p class="value" id="userName">John Doe</p>
+    </div>
+
+    <div class="info-item">
+      <p class="label">Email</p>
+      <p class="value" id="userEmail">johndoe@email.com</p>
+    </div>
+
+    <div class="info-item">
+      <p class="label">Phone</p>
+      <p class="value" id="userPhone">+91 98765 43210</p>
+    </div>
+
+    <div class="info-item">
+      <p class="label">Country</p>
+      <p class="value" id="userCountry">India</p>
+    </div>
+
+    <div class="info-item">
+      <p class="label">Account Type</p>
+      <p class="value" id="userRole">Premium User</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+ <section class="feed-section">
+  <h3>Public Feed</h3>
+  <p class="intro">Explore videos uploaded by our users — each one tells a story.</p>
+  
+  <div id="feed" class="feed">
+    <!-- Example card -->
+    <div class="video-card">
+      <video controls src="sample.mp4"></video>
+      <h4>Uploaded by Admin</h4>
+      <p>A short description or title for this video.</p>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="team-section">
+<h2>Meet the Minds Behind Verbun</h2>
+    <p>The creative individuals who bring life to our language learning platform.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Shreya Bharti" class="team-img" />
+        <h3>Vaibhav Pant</h3>
+        <p class="role">UI/UX Designer</p>
+        <p>Designs intuitive and elegant user experiences that make learning feel effortless.</p>
+      </div>
+      <!-- Additional team members can be added here -->
+    </div>
+</section>
+
+
+<footer class="footer-contact">
+  <div class="footer-overlay"></div>
+
+  <div class="footer-container">
+    <!-- Brand Section -->
+    <div class="footer-column brand">
+      <h2>Verbun</h2>
+      <p>Empowering the world through language and culture.</p>
+    </div>
+
+    <!-- User Contact Details -->
+    <div class="footer-column contact-info">
+      <h3>User Details</h3>
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Email:</strong> johndoe@email.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Location:</strong> New Delhi, India</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column quick-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Feed</a></li>
+        <li><a href="#">Upload</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Links -->
+    <div class="footer-column socials">
+      <h3>Connect</h3>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram">jbvgvjhb<i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn">lojiuyf6fyh<i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"> hvgtygu<i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <p class="copyright">
+    © 2025 <span>Verbun</span>. Crafted with <span aria-label="love" role="img">💛</span> by the Verbun Team.
+  </p>
+</footer>
+
+
+
+
+
+  <script src="j.js">
+
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload Video | Verbun</title>
+  <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+  <!--  Netflix-style Navbar -->
+<nav class="navbar">
+  <div class="logo">Verbun</div>
+
+  <div class="nav-links">
+    <a href="h.html">Home</a>
+    <a href="h.html#feed">Feed</a>
+    <a href="h.html#team">Profile</a>
+  </div>
+
+  <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+
+  <main class="main">
+    <div class="card upload-area">
+      <div class="upload-header">
+        <strong>Upload a video</strong>
+        <div class="user-input">
+          <label class="small">Display name</label>
+          <input id="displayName" placeholder="Your name or handle" />
+        </div>
+      </div>
+
+      <div id="dropzone" class="drop">
+        Drop video here or
+        <label for="fileInput" class="btn">Choose file</label>
+        <input id="fileInput" type="file" accept="video/*" />
+        <div class="hint">
+          Max file size depends on browser & storage.
+        </div>
+      </div>
+
+      <div class="upload-footer">
+        <div id="uploadStatus" class="small"></div>
+        <button id="clearLocal" class="btn ghost" >Clear Local</button>
+      </div>
+
+      <!-- 🎬 New Button to View Public Feed -->
+    
+        <button class="btn view-btn" onclick="window.location.href='h.html'">
+          🎥 View Public Feed
+        </button>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="upload.js"></script>
+</body>
+</html>
+
+

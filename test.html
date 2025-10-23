@@ -1,0 +1,275 @@
+  <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hamburger Debug Demo</title>
+<style>
+
+:root {
+  --bg: #f5f7fa;
+}
+
+body {
+  font-family: Poppins, Inter, sans-serif;
+  background: var(--bg);
+  margin: 0;
+
+/* adjust to your nav height */
+
+
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.75rem 3rem; 
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 48px rgba(31, 38, 135, 0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge {
+  background: gold;
+  color: #111;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.links a:hover::after,
+.links a:focus::after {
+  width: 100%;
+}
+
+.user-area {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.user-area button {
+  background: #007bff;
+  color: #fff;
+  border: 0;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.45);
+}
+
+.user-area button:hover,
+.user-area button:focus {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 86, 179, 0.6);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  z-index: 1100;
+  transition: transform 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: gold;
+  border-radius: 2px;
+  transition: all 0.28s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .user-area {
+    display: none !important;
+  }
+
+  .links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 14px;
+    width: 210px;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 0.22s ease forwards;
+    z-index: 1050;
+  }
+
+  nav.expanded .links {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><div class="badge">G</div><h3 style="margin:0;color:#007bff">GlassNav</h3></div>
+
+  <div class="links" id="primary-navigation" role="menu">
+    <a href="#" role="menuitem">Home</a>
+    <a href="#" role="menuitem">Upload</a>
+    <a href="#" role="menuitem">Feed</a>
+    <a href="#" role="menuitem">Settings</a>
+  </div>
+
+  <div class="user-area">
+    <span>Hello, user</span>
+    <button>Login</button>
+  </div>
+
+  <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main style="padding:24px;">
+  <h1>Content area</h1>
+  <p>Resize to test mobile hamburger behavior.</p>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
+  const links = document.getElementById('primary-navigation');
+
+  if (!hamburger || !nav || !links) {
+    console.error('Missing element: ', {hamburger: !!hamburger, nav: !!nav, links: !!links});
+    return;
+  }
+
+  function openMenu() {
+    nav.classList.add('expanded');
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    // trap focus or other logic could go here
+  }
+  function closeMenu() {
+    nav.classList.remove('expanded');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (nav.classList.contains('expanded')) closeMenu(); else openMenu();
+  });
+
+  // Close when clicking outside the nav (only when mobile menu is open)
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('expanded')) return;
+    if (!nav.contains(e.target)) closeMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('expanded')) closeMenu();
+  });
+
+  // Optional: close menu when a link inside is clicked (common mobile behavior)
+  links.addEventListener('click', (e) => {
+    if (e.target.closest('a')) closeMenu();
+  });
+});
+</script>
+
+</body>
+</html>

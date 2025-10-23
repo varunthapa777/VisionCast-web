@@ -1,0 +1,362 @@
+:root {
+  --text: #111;
+  --muted: rgba(0,0,0,0.7);
+  --radius: 14px;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: #f5f5f5;
+  color: var(--text);
+}
+
+/* ============================= */
+/* Navigation Bar */
+/* ============================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #111;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #000;
+}
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  transition: transform 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: gold;
+  border-radius: 2px;
+  transition: all 0.28s ease;
+}
+
+/* Animate hamburger into X */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    right: 14px;
+    width: 210px;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 0.22s ease forwards;
+    z-index: 1050;
+  }
+
+  .navbar.expanded .nav-links {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ============================= */
+/* Main Content Layout */
+/* ============================= */
+.main {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================= */
+/* Upload Card */
+/* ============================= */
+.card {
+  background: linear-gradient(145deg, #fff, #f0f0f0);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.15);
+  width: 400px;
+ padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.25);
+}
+
+.upload-header strong {
+  
+  font-size: 1.6rem;
+  color: #111;
+  display: block;
+  margin-bottom: 25px;
+
+}
+#small{
+   font-size: 0.85rem;
+    height: 3px;
+}
+.user-input label.small {
+  display: block;
+  font-size: 0.85rem;
+  color: #555; /* optional: make label visible */
+  margin-bottom: 10px; /* increased space between label and input */
+}
+
+.user-input {
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.user-input input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #111;
+  background: #fff;
+  outline: none;
+}
+
+.user-input input:focus {
+  border-color: #999;
+  box-shadow: 0 0 6px #999;
+}
+
+/* ============================= */
+/* Dropzone */
+/* ============================= */
+.drop {
+  border: 2px dashed rgba(0,0,0,0.3);
+  border-radius: 12px;
+ padding: 50px 20px; /* Increased top/bottom space */
+  margin: 35px 0;
+  color: rgba(0,0,0,0.85);
+  transition: all 0.4s ease;
+}
+
+.drop:hover {
+  border-color: #000;
+  background: rgba(0,0,0,0.05);
+  transform: scale(1.02);
+}
+
+.drop input[type="file"] {
+  display: none;
+}
+
+/* ============================= */
+/* Buttons */
+/* ============================= */
+.btn {
+display: inline-block; background: linear-gradient(90deg, #111, #333); color: #fff; padding: 11px 22px; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Ghost button */
+.btn.ghost {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border-radius: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.btn.ghost:hover {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+/* View Feed Button */
+.view-feed {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.view-btn {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border-radius: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.view-btn:hover,
+.view-btn:focus,
+.view-btn:active {
+  color: #fff;
+  background: linear-gradient(135deg, #333, #000);
+  box-shadow: 0 0 14px rgba(0,0,0,0.35);
+  transform: translateY(-2px);
+}
+.btn.ghost, .view-btn {
+  margin-top: 20px; /* More spacing between buttons */
+}
+/* Responsive */
+
+/* Upload status */
+.status-text {
+  font-weight: 700;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: rgba(255,255,255,0.95);
+    width: 220px;
+    padding: 2rem 1rem;
+    gap: 1rem;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .card {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+/* ============================= */
+/* Ambient glow behind the card */
+body::before {
+  content: "";
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0,0,0,0.1), transparent 70%);
+  z-index: -1;
+  filter: blur(60px);
+}
+
+
+
+
+

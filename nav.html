@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbun Navbar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top left, #0a0a0a, #1a1a1a);
+    color: #fff;
+  }
+
+  /* Glassmorphism Navbar */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 50px;
+    z-index: 999;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: gold;
+    letter-spacing: 1px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links li a:hover {
+    color: gold;
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Menu */
+  .menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    color: gold;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      position: absolute;
+      top: 65px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      display: none;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .menu-icon {
+      display: block;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Verbun</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Languages</a></li>
+    <li><a href="#">Dashboard</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="menu-icon" id="menuIcon">&#9776;</div>
+</nav>
+
+<script>
+  const menuIcon = document.getElementById('menuIcon');
+  const navLinks = document.getElementById('navLinks');
+
+  menuIcon.onclick = () => {
+    navLinks.classList.toggle('active');
+  };
+</script>
+
+<div style="padding-top:100px; text-align:center;">
+  <h1>Welcome to Verbun</h1>
+  <p>Your journey to mastering languages starts here.</p>
+</div>
+
+</body>
+</html>
